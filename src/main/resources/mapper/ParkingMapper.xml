@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jnuparkingsystem.dao.ParkingMapper">
+
+
+<!--_________________________________________________________________________________-->
+<!-- realtime parking table-->
+    <select id="count" resultType="int">
+        SELECT count(*) FROM parking
+    </select>
+
+    <insert id="enter" parameterType="Car">
+        INSERT INTO parking
+            (carNumber, enterDate, haveRegularParkingTicket)
+        VALUES
+            (#{carNumber}, #{enterDate, jdbcType=TIMESTAMP}, #{haveRegularParkingTicket, jdbcType=BOOLEAN})
+    </insert>
+
+    <select id="enteredBefore" parameterType="String" resultType="boolean">
+        SELECT EXISTS (
+            SELECT 1 FROM parking WHERE carNumber = #{carNumber}
+        )
+    </select>
+
+    <delete id="exit" parameterType="String">
+        DELETE FROM parking WHERE carNumber = #{carNumber}
+    </delete>
+
+    <select id="select" parameterType="String" resultType="Car">
+        SELECT * FROM parking WHERE carNumber = #{carNumber}
+    </select>
+
+    <update id="update" parameterType="Car">
+        UPDATE parking
+        SET carNumber = #{carNumber} , enterDate = #{enterDate} , haveRegularParkingTicket = #{haveRegularParkingTicket, jdbcType=BOOLEAN}
+        WHERE carNumber = #{carNumber}
+    </update>
+
+
+
+<!--_________________________________________________________________________________-->
+<!-- parking history table-->
+    <select id="countHis" resultType="int">
+        SELECT count(*) FROM parking_history
+    </select>
+
+    <insert id="enterHis" parameterType="Car">
+        INSERT INTO parking_history
+            (carNumber, enterDate, haveRegularParkingTicket)
+        VALUES
+            (#{carNumber}, #{enterDate, jdbcType=TIMESTAMP}, #{haveRegularParkingTicket, jdbcType=BOOLEAN})
+    </insert>
+
+    <update id="exitHis" parameterType="String">
+        UPDATE parking_history
+        SET exitDate = now()
+        WHERE carNumber = #{carNumber}
+    </update>
+
+    <update id="exitHis2" parameterType="Car">
+        UPDATE parking_history
+        SET exitDate = #{exitDate, jdbcType=TIMESTAMP}, fee = #{fee}, paidFee = #{paidFee}, changeFee = #{changeFee}
+        WHERE carNumber = #{carNumber}
+    </update>
+
+    <delete id="deleteHis" parameterType="String">
+        DELETE FROM parking_history WHERE carNumber = #{carNumber}
+    </delete>
+
+    <select id="selectHis" parameterType="String" resultType="Car">
+        SELECT FROM parking_history WHERE carNumber = #{carNumber}
+    </select>
+
+    <update id="updateHis" parameterType="Car">
+        UPDATE parking_history
+        SET carNumber = #{carNumber} , enterDate = #{enterDate} , exitDate = #{exitDate, jdbcType=TIMESTAMP}, haveRegularParkingTicket = #{haveRegularParkingTicket, jdbcType=BOOLEAN}, fee = #{fee}, paidFee = #{paidFee}, changeFee = #{changeFee}
+        WHERE carNumber = #{carNumber}
+    </update>
+
+
+<!--_________________________________________________________________________________-->
+<!--    regular parking ticket table-->
+    <select id="countTicket" resultType="int">
+        SELECT count(*) FROM regular_parking_ticket
+    </select>
+
+    <insert id="issueTicket" parameterType="String">
+        INSERT INTO regular_parking_ticket
+            (carNumber, issueDate)
+        VALUES
+            (#{carNumber}, now())
+    </insert>
+
+    <delete id="deleteTicket" parameterType="String">
+        DELETE FROM regular_parking_ticket WHERE carNumber = #{carNumber}
+    </delete>
+
+    <select id="selectTicket" parameterType="String" resultType="Car">
+        SELECT FROM regular_parking_ticket WHERE carNumber = #{carNumber}
+    </select>
+
+    <select id="haveTicket" parameterType="String" resultType="boolean">
+    SELECT EXISTS (
+    SELECT 1 FROM regular_parking_ticket WHERE carNumber = #{carNumber}
+    )
+    </select>
+
+    <update id="updateTicket" parameterType="Car">
+        UPDATE regular_parking_ticket
+        SET carNumber = #{carNumber} , enterDate = #{enterDate} , haveRegularParkingTicket = #{haveRegularParkingTicket, jdbcType=BOOLEAN}
+        WHERE carNumber = #{carNumber}
+    </update>
+
+</mapper>

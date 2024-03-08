@@ -1,0 +1,82 @@
+:root {
+    --color-green: #02ab6a;
+    --color-white: #ffffff;
+    --color-black: #000000;
+}
+
+.jnu_nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(186, 255, 200, 0.16);
+    box-shadow: 2px 4px 13px 0px #48a044;
+    padding: 0px 12px;
+}
+a {
+    font-family: "Orbit", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    color : var(--color-green);
+}
+
+body {
+    font-family: "Orbit", sans-serif;
+    position : relative;
+    height: 100vh;
+}
+
+.nav_logo a{
+    position : relative;
+    top : -20px;
+    font-size: larger;
+}
+
+.nav_icons i {
+    font-size: 30px;
+    right : -5px;
+}
+.nav_icons li {
+    list-style: none;
+}
+
+ul.nav_icons {
+    padding : 0;
+}
+
+
+/* Default styles */
+div {
+    text-align: center;
+}
+
+.enterBtn {
+    background-color: rgba(255, 0, 0, 0.45);
+    box-shadow: 10px 7px 20px 0px rgb(149 0 0 / 79%);
+}
+
+.exitBtn {
+    background-color: rgba(0, 255, 51, 0.45);
+    box-shadow: 8px 10px 13px 0px rgb(0 121 15 / 78%);
+}
+
+
+.enterBtn,
+.exitBtn {
+    display: inline-block;
+
+    width: 30vw;
+    height: 30vw;
+    margin: 100px 5px;
+    border-radius: 30px;
+    border-color: transparent;
+    color: white;
+
+    font-family: "Orbit", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    font-size : 30px;
+}
+
+
+
