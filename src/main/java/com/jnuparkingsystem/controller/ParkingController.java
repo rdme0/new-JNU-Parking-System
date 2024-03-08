@@ -65,7 +65,7 @@ public class ParkingController {
         if (result.hasErrors()) {
             redirectAttributes.addFlashAttribute("message", "입차를 실패하였습니다. 올바른 번호를 입력해주세요.");
             System.out.println("입차 검증 실패");
-            return "redirect:/parking/enter"; // WEB-INF/views/parkingInfo.jsp
+            return "redirect:/parking/enter";
         }
 
         //서비스
@@ -130,7 +130,7 @@ public class ParkingController {
         }
 
 
-        return "exitPay"; // WEB-INF/views/parkingInfo.jsp
+        return "exitPay";
 
     }
 
