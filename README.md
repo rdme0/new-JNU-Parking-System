@@ -27,6 +27,9 @@
 
 https://github.com/rdme0/new-JNU-Parking-System/assets/71927381/cbe85e7d-223d-4f23-8dee-166daa628035
 
+
+<br><br>      
+
 ### 기능 1 : 주차 가능 공간 개수 카운팅
 
 <details>
@@ -83,6 +86,8 @@ https://github.com/rdme0/new-JNU-Parking-System/assets/71927381/cbe85e7d-223d-4f
    ```
    Parking 테이블에서 현재 주차중인 공간을 반환한 것을 그대로 반환
 </details>
+
+<br><br>      
 
 ### 기능 2 : 입차하기
 
@@ -280,6 +285,7 @@ parking과 parking_history 테이블에 차량 번호, 입차 일시, 정기 주
 </details>
    
 
+<br><br>      
 ### 기능 3 : 출차하기 페이즈 1
 
 #### 3-1 : myproject/parking/exit getMapping을 postMapping으로 돌리기
@@ -435,6 +441,7 @@ carNumber를 키 값으로 하는 데이터를 반환한 값을 그대로 반환
 
 </details>
 
+<br><br>      
 
 ### 기능 4 : 출차하기 페이즈 2
 
@@ -460,7 +467,6 @@ carNumber를 키 값으로 하는 데이터를 반환한 값을 그대로 반환
             return "redirect:/parking/exit";
         }
 ```
-
 
 ##### CarValidator
 ```java
@@ -542,7 +548,7 @@ true일때는 출차가 완료되었다는 알림창과 함께 index.jsp인 메�
 carDto에 출차한 시간을 기록하고 parkingCarDao에는 carNumber를, parkingHistoryDao에는 carDto를 전달
 
 ##### Repository
-##### parkingCarDao
+- ##### parkingCarDao
 ```java
 @Override
     public int exit(String carNumber) throws Exception { //출차
@@ -550,7 +556,7 @@ carDto에 출차한 시간을 기록하고 parkingCarDao에는 carNumber를, par
     }
 ```
 
-##### MyBatis Mapping
+- ##### MyBatis Mapping
 ```xml
 <delete id="exit" parameterType="String">
         DELETE FROM parking WHERE carNumber = #{carNumber}
@@ -560,7 +566,7 @@ carDto에 출차한 시간을 기록하고 parkingCarDao에는 carNumber를, par
 parking 테이블에서 carNumber를 key로 하는 데이터를 삭제 함
 
 
-##### parkingHistoryDao
+- ##### parkingHistoryDao
 ```java
 @Override
     public int exitVer2(Car car) throws Exception { //출차 버전 2
@@ -568,7 +574,7 @@ parking 테이블에서 carNumber를 key로 하는 데이터를 삭제 함
     } 
 ```
 
-##### MyBatis Mapping
+- ##### MyBatis Mapping
 ```xml
 <update id="exitHis2" parameterType="Car">
         UPDATE parking_history
