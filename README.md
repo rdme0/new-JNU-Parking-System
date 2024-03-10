@@ -426,6 +426,7 @@ parkingService로부터 주차요금을 반환 받되, -1을 받았을 경우 �
 enteredBefore 메서드는 2-3의 document_RegularTicket 메서드랑 같은 로직을 사용<br>
 car2 인스턴스를 생성하여 parkingCarDao에서 온 car 타입 반환값을 참조<br>
 이후 주차요금을 계산하여 car에 입차시각, 출차시각, 주차요금을 기록
+<br>정기주차권 여부에 따라 요금 산정방식을 다르게 하는 기능은 추후 구현 예정
 
 ##### Repository
 - ##### ParkingCarDao
