@@ -151,9 +151,11 @@ public class ParkingController {
     public String exitCarPhase2(@Valid Car car, BindingResult result, Model m, RedirectAttributes redirectAttributes) {
         System.out.println("result=" + result);
 
-        // Car 객체를 검증한 결과 에러가 있으면, parkingForm을 이용해서 에러를 보여줘야 함.
+        // Car 객체를 검증한 결과 에러가 있으면, 리다이렉트
         if (result.hasErrors()) {
-            return "parkingError";
+            redirectAttributes.addFlashAttribute("message", "출차를 실패하였습니다. 올바른 번호를 입력해주세요.");
+            System.out.println("출차 검증 실패");
+            return "redirect:/parking/exit";
         }
 
         try {
