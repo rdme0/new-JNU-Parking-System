@@ -284,6 +284,11 @@ parking과 parking_history 테이블에 차량 번호, 입차 일시, 정기 주
 
 #### 3-1 : myproject/parking/exit getMapping을 postMapping으로 돌리기
 
+<details>
+
+
+<summary>기능 3-1 구현 코드 펼치기</summary>
+
 ```java
 @GetMapping("/exit")
     public String exit_car() {
@@ -296,7 +301,16 @@ parking과 parking_history 테이블에 차량 번호, 입차 일시, 정기 주
 ```
 2-1과 동일한 로직
 
+
+</details>
+
 #### 3-2 : CarDto 검증 - 차량 번호 & 지불한 값
+
+<details>
+
+
+<summary>기능 3-2 구현 코드 펼치기</summary>
+
 
 ##### Controller
 ```java
@@ -315,7 +329,17 @@ parking과 parking_history 테이블에 차량 번호, 입차 일시, 정기 주
 ##### CarValidator
 2-2와 같은 차량 번호 검증 메서드를 사용하고, 지불한 돈이 올바른 0이상 정수인지 검증함
 
+
+</details>
+
+
 #### 3-3 본격적인 출차 페이즈 1 로직
+
+<details>
+
+
+<summary>기능 3-3 구현 코드 펼치기</summary>
+
 
  ##### Controller
  ``` java
@@ -409,11 +433,21 @@ car2 인스턴스를 생성하여 parkingCarDao에서 온 car 타입 반환값�
 
 carNumber를 키 값으로 하는 데이터를 반환한 값을 그대로 반환
 
+</details>
 
 
 ### 기능 4 : 출차하기 페이즈 2
+
+
+
 3-3에서 알 수 있듯이, Cardto 파라미터로 넘어옴
   #### 4-1 : CarDto 검증 - 차량 번호 & 지불한 값
+
+<details>
+
+
+<summary>기능 4-1 구현 코드 펼치기</summary>
+  
 ##### Controller
 ```java
  @PostMapping("/exit")
@@ -448,8 +482,15 @@ Car car = (Car) target;
 ```
 2-2와 같은 차량 번호 검증 메서드를 사용하고, 지불한 돈이 올바른 0이상 정수인지 검증함
 
+</details>
 
 #### 4-2 : 본격적인 출차하기 페이즈 2 로직
+
+<details>
+
+
+<summary>기능 4-2 구현 코드 펼치기</summary>
+
 ##### Controller
 ```java
  try {
@@ -537,6 +578,7 @@ parking 테이블에서 carNumber를 key로 하는 데이터를 삭제 함
 ```
 반면에 parking_history 테이블에서는 carDto로 업데이트 함
 
+</details>
 
 
 
