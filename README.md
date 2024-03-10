@@ -3,6 +3,8 @@
 - 제작 인원 : 1명
 
 ### 개발 환경
+
+#### BE
 - Java 11
 - IntelliJ 2023.3
 - Apache Tomcat 9.0.84
@@ -10,7 +12,7 @@
 - MySQL
 - MyBatis<br><br>
 
-
+#### FE
 - HTML5 & CSS3
 - JavaScript
 
