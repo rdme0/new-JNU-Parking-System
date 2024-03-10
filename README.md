@@ -1,9 +1,8 @@
-# new JNU Parking System
+# NEW JNU Parking System
 - 제작 기간 : 2024.03.04 ~ <br>
 - 제작 인원 : 1명
 
-### 개발 환경
-
+## 개발 환경
 #### BE
 - Java 11
 - IntelliJ 2023.3
@@ -16,7 +15,7 @@
 - HTML5 & CSS3
 - JavaScript
 
-### 프로젝트 구조 및 기능
+## 프로젝트 구조 및 기능
   #### - 전체적인 흐름
 
 유스케이스 다이어그램(아직 30% 정도 구현 안됨)
