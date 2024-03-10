@@ -7,7 +7,8 @@ public interface ParkingService {
     int getMax();
 
     long getStandardFee();
-
+    @Transactional
+    public int availableParkingSpaces() throws Exception;
     @Transactional
     int enterCar(Car car) throws Exception;
 

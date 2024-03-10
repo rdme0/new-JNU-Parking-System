@@ -48,6 +48,7 @@ ul.nav_icons {
 /* Default styles */
 div {
     text-align: center;
+
 }
 
 .enterBtn {
@@ -79,4 +80,7 @@ div {
 }
 
 
-
+.digital-font {
+    font-family: 'DS-Digital', sans-serif;
+    font-size: 30px;
+}

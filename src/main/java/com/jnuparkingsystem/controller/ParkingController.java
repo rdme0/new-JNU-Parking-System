@@ -17,12 +17,24 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-@RequestMapping("/parking")
+@RequestMapping({"/", "/parking"})
 public class ParkingController {
 
     @Autowired
     ParkingService parkingService;
 
+
+
+    @RequestMapping("/")
+    public String index( Model m) throws Exception {
+        try {
+            m.addAttribute("count", parkingService.availableParkingSpaces());
+            return "index";
+        } catch (Exception e){
+            e.printStackTrace();
+            return "index";
+        }
+    }
 
     @InitBinder
     public void initBinder(WebDataBinder binder) {
@@ -71,6 +83,7 @@ public class ParkingController {
         //서비스
         try {
             int retService = parkingService.enterCar(car);
+            m.addAttribute("count", parkingService.availableParkingSpaces());
 
             if(retService == -1){
                 m.addAttribute("message", "주차장이 꽉 찼습니다.");
@@ -151,7 +164,7 @@ public class ParkingController {
                 System.out.println("잔액부족");
                 return "redirect:/parking/exit";
             }
-
+            m.addAttribute("count", parkingService.availableParkingSpaces());
         } catch (Exception e) {
 
             e.printStackTrace();

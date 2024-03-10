@@ -18,7 +18,7 @@ public class ParkingServiceImpl implements ParkingService {
     ParkingCarDao parkingCarDao;
     @Autowired
     ParkingHistoryDao parkingHistoryDao;
-    private final int MAX = 3; //주차장 최대 자리 수
+    private final int MAX = 5; //주차장 최대 자리 수
     private final long STANDARDFEE = 1000; //기본 요금
 
     @Override
@@ -29,6 +29,12 @@ public class ParkingServiceImpl implements ParkingService {
     @Override
     public long getStandardFee() {
         return STANDARDFEE;
+    }
+
+
+    @Transactional
+    public int availableParkingSpaces() throws Exception {
+        return getMax() - countParking();
     }
 
     @Override
